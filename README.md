@@ -14,6 +14,7 @@ să-și crească veniturile și să atragă cât mai mulți cititori, oferind ac
 de cărți.
 
 #Înregistrare (atât pentru compărător, cât şi pentru Librărie)
+
 Utilizatorii trebuie să se înregistreze mai întâi în aplicație selectând unul dintre cele 2 roluri:
 utilizator sau manager de magazin. Ambele roluri necesită un nume de utilizator unic, o
 parolă și informații de bază precum numele complet, adresa și numărul de telefon.
