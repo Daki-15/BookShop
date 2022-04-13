@@ -6,7 +6,7 @@ A JavaFX Application demonstrating how to implement a simplistic approach of a r
 * [Nitrite Java](https://www.dizitart.org/nitrite-database.html) (as Database)
 
 # Book Shop
-Membrii echipei: Meșter Rebeca, Paunovic Darjan
+Membrii echipei: Meșter Rebeca; Paunovic Darjan
 
 ## Descriere generală
 Această aplicație își propune să ajute toți utilizatorii cărora le place să citească cărți și librăriile
