@@ -2,6 +2,7 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.loose.fis.sre.exceptions.FieldNotCompletedException;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.sre.model.User;
 
@@ -15,6 +16,7 @@ import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 public class UserService {
 
     private static ObjectRepository<User> userRepository;
+    private static Nitrite database;
 
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
@@ -24,9 +26,16 @@ public class UserService {
         userRepository = database.getRepository(User.class);
     }
 
-    public static void addUser(String username, String password, String role) throws UsernameAlreadyExistsException {
+    public static void addUser(String username, String password, String role, String phoneNumber, String address, String name) throws UsernameAlreadyExistsException, FieldNotCompletedException {
         checkUserDoesNotAlreadyExist(username);
-        userRepository.insert(new User(username, encodePassword(username, password), role));
+        checkAllFieldsAreCompleted(username, password, role, phoneNumber, address, name);
+        userRepository.insert(new User(username, encodePassword(username, password), role, phoneNumber, address, name));
+    }
+
+    public static void checkAllFieldsAreCompleted(String username, String password, String role, String phoneNumber,  String address, String name) throws FieldNotCompletedException {
+
+        if (username.trim().isEmpty() || password.trim().isEmpty() || role.trim().isEmpty() || phoneNumber.trim().isEmpty() ||  address.trim().isEmpty()  || name.trim().isEmpty() )
+            throw new FieldNotCompletedException();
     }
 
     private static void checkUserDoesNotAlreadyExist(String username) throws UsernameAlreadyExistsException {
@@ -57,5 +66,11 @@ public class UserService {
         return md;
     }
 
+    public static ObjectRepository<User> getUserRepository() {
+        return userRepository;
+    }
 
+    public static Nitrite getDatabase() {
+        return database;
+    }
 }
