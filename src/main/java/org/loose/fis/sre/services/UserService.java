@@ -3,6 +3,7 @@ package org.loose.fis.sre.services;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.exceptions.FieldNotCompletedException;
+import org.loose.fis.sre.exceptions.InvalidPassword;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.sre.model.User;
 
@@ -44,6 +45,22 @@ public class UserService {
                 throw new UsernameAlreadyExistsException(username);
         }
     }
+
+    //*************
+    public static void checkForUser(String username, String passwordb, String role) throws InvalidPassword {
+        for (User user : userRepository.find()) {
+            if (Objects.equals(username, user.getUsername())) {
+                if (!checkPassword(user.getPassword(), passwordb, user.getUsername()) && role.equals(user.getRole()))
+                    throw new InvalidPassword();
+            }
+        }
+    }
+
+    //******
+    public static boolean checkPassword(String pass_from_data, String pass_from_form, String username) {
+        return Objects.equals(pass_from_data, encodePassword(username, pass_from_form));
+    }
+    //******
 
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
