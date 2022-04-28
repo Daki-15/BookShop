@@ -56,9 +56,18 @@ public class LoginController {
         int ok = UserService.checkForUser(usernameField.getText(), passwordField.getText(), role.getValue());
 
         if(ok == 0){
+
             logInMessage.setText("Account Log In successfully!");
             usernameField.clear();
             passwordField.clear();
+
+            //In function the role it will be displayed different scene
+            if(role.getValue() == "Client"){
+                //...Client scene/window
+            }
+            if(role.getValue() == "Bookshop"){
+                //...Bookshop scene/window
+            }
         }
         if(ok == 1){
             logInMessage.setText("Your password or role is wrong! Try again");
