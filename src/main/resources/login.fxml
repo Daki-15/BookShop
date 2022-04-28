@@ -5,11 +5,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="login" prefHeight="400.0" prefWidth="440.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.LoginController">
+<AnchorPane id="login" prefHeight="400.0" prefWidth="610.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.LoginController">
    <children>
       <Text id="title-text" layoutX="178.0" layoutY="84.0" text="Log In" wrappingWidth="83.87066650390625">
          <font>
@@ -34,16 +36,21 @@
          </font>
       </Label>
       <ChoiceBox fx:id="role" layoutX="171.0" layoutY="219.0" prefWidth="150.0" />
-      <Button contentDisplay="CENTER" layoutX="114.0" layoutY="281.0" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #4169E1;" text="Log in" textFill="IVORY">
+      <Button fx:id="logInButton" contentDisplay="CENTER" layoutX="114.0" layoutY="281.0" onAction="#handleLogInAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #4169E1;" text="Log in" textFill="IVORY">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button contentDisplay="CENTER" layoutX="247.0" layoutY="281.0" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #4169E1;" text="Register" textFill="IVORY">
+      <Button fx:id="registerButton" contentDisplay="CENTER" layoutX="247.0" layoutY="281.0" onAction="#handleRegisterAction" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #4169E1;" text="Register" textFill="IVORY">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
       <Text fx:id="logInMessage" layoutX="137.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="203.73675537109375" />
+      <ImageView fitHeight="205.0" fitWidth="220.0" layoutX="370.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/booksImage.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

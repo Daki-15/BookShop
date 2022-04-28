@@ -70,11 +70,14 @@ public class RegistrationController {
 
     public void openLogInScene() throws Exception{
         Stage stage = new Stage();
-        System.out.println("Load botton");
 
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         stage.setTitle("Book Shop: Log In");
-        stage.setScene(new Scene(root, 440, 400));
+        stage.setScene(new Scene(root, 600, 400));
         stage.show();
+
+        Stage curentStage = (Stage) logInButton.getScene().getWindow();
+        // do what you have to do
+        curentStage.close();
     }
 }
