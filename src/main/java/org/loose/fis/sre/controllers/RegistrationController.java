@@ -43,6 +43,7 @@ public class RegistrationController {
     @FXML
     private Button registerButton;
 
+    @FXML
     private Button logInButton;
 
     @FXML
@@ -68,14 +69,12 @@ public class RegistrationController {
     }
 
     public void openLogInScene() throws Exception{
-        try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+        Stage stage = new Stage();
+        System.out.println("Load botton");
 
-            Stage window = (Stage) logInButton.getScene().getWindow();
-            window.setScene(new Scene(root, 600, 400));
-        }
-        catch (Exception e){
-            System.out.println("Can not load \"Log In\" scene!");
-        }
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
+        stage.setTitle("Book Shop: Log In");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
     }
 }
