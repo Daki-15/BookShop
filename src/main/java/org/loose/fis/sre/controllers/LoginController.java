@@ -64,11 +64,23 @@ public class LoginController {
             //In function the role it will be displayed different scene
             if(role.getValue() == "Client"){
                 //...Client scene/window
+                Stage stage = new Stage();
+
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("client.fxml"));
+                stage.setTitle("Client");
+                stage.setScene(new Scene(root, 600, 400));
+                stage.show();
+
+                //Close curent scene
+                Stage curentStage = (Stage) registerButton.getScene().getWindow();
+                curentStage.close();
             }
+
             if(role.getValue() == "Bookshop"){
                 //...Bookshop scene/window
             }
         }
+
         if(ok == 1){
             logInMessage.setText("Your password or role is wrong! Try again");
         }

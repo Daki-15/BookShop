@@ -14,9 +14,6 @@ import org.loose.fis.sre.exceptions.FieldNotCompletedException;
 import org.loose.fis.sre.exceptions.UsernameAlreadyExistsException;
 import org.loose.fis.sre.services.UserService;
 
-import java.security.cert.Extension;
-import java.util.Objects;
-
 public class RegistrationController {
 
     @FXML
@@ -76,8 +73,8 @@ public class RegistrationController {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
 
+        //Close curent scene
         Stage curentStage = (Stage) logInButton.getScene().getWindow();
-        // do what you have to do
         curentStage.close();
     }
 }
