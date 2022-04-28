@@ -78,6 +78,16 @@ public class LoginController {
 
             if(role.getValue() == "Bookshop"){
                 //...Bookshop scene/window
+                Stage stage = new Stage();
+
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("bookshop.fxml"));
+                stage.setTitle("Book Shop");
+                stage.setScene(new Scene(root, 600, 400));
+                stage.show();
+
+                //Close curent scene
+                Stage curentStage = (Stage) registerButton.getScene().getWindow();
+                curentStage.close();
             }
         }
 
