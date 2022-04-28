@@ -74,7 +74,7 @@ public class RegistrationController {
 
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
         stage.setTitle("Book Shop: Log In");
-        stage.setScene(new Scene(root, 600, 400));
+        stage.setScene(new Scene(root, 440, 400));
         stage.show();
     }
 }
