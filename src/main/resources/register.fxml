@@ -57,4 +57,9 @@
          <Image url="@images/booksImage.png" />
       </image>
    </ImageView>
+   <Button fx:id="logInButton" contentDisplay="CENTER" layoutX="342.0" layoutY="327.0" onAction="#openLogInScene" prefHeight="40.0" prefWidth="94.0" style="-fx-background-color: #4169E1;" text="Log in" textFill="IVORY">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font>
+   </Button>
 </AnchorPane>
