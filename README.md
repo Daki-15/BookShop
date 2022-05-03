@@ -22,14 +22,15 @@ parolă și informații de bază precum numele complet, adresa și numărul de t
 
 ## Librarie:
 - După ce managerul magazinului se conectează, el poate adăuga, edita sau șterge cartea. O
-  carte trebuie să conțină numele, numele autorului, genul, editura, prețul și opțional
-  imaginea.
+  carte trebuie să conțină numele, numele autorului, genul, editura si prețul.
 - De asemenea, după autentificare, va vedea o listă cu toate cărțile comandate în acea zi.
+- El poate vizualiza lista cartilor vandute.
 
 ## Utilizator:
 - Un utilizator trebuie să se autentifice în aplicație unde va putea vedea o listă cu toate
   cărțile. Lista ar trebui să poată fi căutată după numele sau genul cărții.
 - De asemenea, utilizatorii înregistrați pot selecta orice carte (este posibil să selecteze mai
   multe copii ale aceleiași cărți) și să creeze o comandă care să conțină cărțile selectate.
+- El poate vizualiza lista cartilor cumparate.
 - El poate lăsa o recenzie la librărie și poate sau nu evalua produsul pe un sistem de rating
   de la 1 la 10
