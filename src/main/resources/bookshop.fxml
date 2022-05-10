@@ -28,9 +28,14 @@
          </VBox.margin>
          <graphic>
             <ImageView fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <Image url="@images/Add.png"/>
+               <Image url="@images/Add.png" />
             </ImageView>
          </graphic>
+      </Button>
+      <Button layoutX="10.0" layoutY="145.0" mnemonicParsing="false" onAction="#deleteBookAction" prefHeight="39.0" prefWidth="160.0" text="Delete book">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
       </Button>
    </VBox>
 </AnchorPane>
