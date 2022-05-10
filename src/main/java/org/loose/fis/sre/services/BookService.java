@@ -1,7 +1,9 @@
 package org.loose.fis.sre.services;
 
+import javafx.scene.text.Text;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.loose.fis.sre.exceptions.BookDoesNotExistsException;
 import org.loose.fis.sre.exceptions.BookNameAlreadyExistsException;
 import org.loose.fis.sre.exceptions.FieldNotCompletedException;
 import org.loose.fis.sre.model.Book;
@@ -24,7 +26,7 @@ public class BookService {
 
     public static void addBook(String bookName, String authorName, String bookType, String publishingHouse, float bookPrice) throws BookNameAlreadyExistsException, FieldNotCompletedException {
         checkBookNameAlreadyExists(bookName);
-        checkAllFieldsAreCompleted(bookName,authorName, bookType, publishingHouse, bookPrice);
+        checkAllFieldsAreCompleted(bookName, authorName, bookType, publishingHouse, bookPrice);
         bookRepository.insert(new Book(bookName, authorName, bookType, publishingHouse, bookPrice));
     }
 
@@ -36,7 +38,7 @@ public class BookService {
     }
 
     private static void checkAllFieldsAreCompleted(String bookName, String authorName, String bookType, String publishingHouse, float bookPrice) throws FieldNotCompletedException {
-        if(bookName.trim().isEmpty() || authorName.trim().isEmpty() || bookType.trim().isEmpty() || publishingHouse.trim().isEmpty() || String.valueOf(bookPrice).trim().isEmpty())
+        if (bookName.trim().isEmpty() || authorName.trim().isEmpty() || bookType.trim().isEmpty() || publishingHouse.trim().isEmpty() || String.valueOf(bookPrice).trim().isEmpty())
             throw new FieldNotCompletedException();
     }
 
@@ -48,5 +50,36 @@ public class BookService {
         } catch (NumberFormatException ex) {
             return false;
         }
+    }
+
+
+    public static void deleteBook(String bookName, Text deleteBookMessage) throws FieldNotCompletedException, BookDoesNotExistsException {
+        checkBookNameFieldIsCompleted(bookName);
+
+        for (Book book : bookRepository.find()) {
+            if (Objects.equals(bookName, book.getBookName())) {
+                System.out.println(book + " removed");
+                bookRepository.remove(book);
+                deleteBookMessage.setText("Book successfully deleted!");
+            }
+            else
+            {
+                deleteBookMessage.setText("");
+                throw new BookDoesNotExistsException(bookName);
+            }
+        }
+    }
+
+    private static void checkBookNameFieldIsCompleted(String bookName) throws FieldNotCompletedException {
+        if (bookName.trim().isEmpty())
+            throw new FieldNotCompletedException();
+    }
+
+    public static ObjectRepository<Book> getBookRepository() {
+        return bookRepository;
+    }
+
+    public static Nitrite getDatabase() {
+        return database;
     }
 }
