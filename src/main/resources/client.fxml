@@ -1,16 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.ClientController">
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.loose.fis.sre.controllers.ClientController">
    <children>
-      <Text id="title-text" layoutX="215.0" layoutY="57.0" text="Client Window" wrappingWidth="169.47064208984375">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
+      <BorderPane prefHeight="400.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox prefHeight="78.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+               <children>
+                  <MenuBar fx:id="menuBar" style="-fx-background-color: #ADD8E6;">
+                    <menus>
+                      <Menu fx:id="view" mnemonicParsing="false" text="View">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#loadBookList" text="View Books" />
+                           </items>
+                      </Menu>
+                      <Menu fx:id="historyOrders" mnemonicParsing="false" text="History of orders" />
+                    </menus>
+                  </MenuBar>
+                  <Text id="title-text" text="Client Window" wrappingWidth="169.47064208984375">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="90.0" top="30.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <AnchorPane fx:id="listAnchor" prefHeight="319.0" prefWidth="640.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
    </children>
 </AnchorPane>

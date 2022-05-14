@@ -52,7 +52,6 @@ public class BookService {
         }
     }
 
-
     public static void deleteBook(String bookName, Text deleteBookMessage) throws FieldNotCompletedException, BookDoesNotExistsException {
         checkBookNameFieldIsCompleted(bookName);
 
