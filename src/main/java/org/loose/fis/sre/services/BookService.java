@@ -78,7 +78,5 @@ public class BookService {
         return bookRepository;
     }
 
-    public static Nitrite getDatabase() {
-        return database;
-    }
+    public static Nitrite getDatabase() { return database; }
 }
