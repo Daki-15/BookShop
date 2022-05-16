@@ -37,6 +37,16 @@ public class BookService {
         }
     }
 
+    public static Book checkBookNameExists(String bookName) throws BookDoesNotExistsException {
+        for (Book book : bookRepository.find()) {
+            if (Objects.equals(bookName, book.getBookName()))
+                return book;
+            else throw new BookDoesNotExistsException(bookName);
+        }
+
+        return null;
+    }
+
     private static void checkAllFieldsAreCompleted(String bookName, String authorName, String bookType, String publishingHouse, float bookPrice) throws FieldNotCompletedException {
         if (bookName.trim().isEmpty() || authorName.trim().isEmpty() || bookType.trim().isEmpty() || publishingHouse.trim().isEmpty() || String.valueOf(bookPrice).trim().isEmpty())
             throw new FieldNotCompletedException();
