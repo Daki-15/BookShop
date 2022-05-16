@@ -3,8 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -26,16 +24,22 @@
          <VBox.margin>
             <Insets top="20.0" />
          </VBox.margin>
-         <graphic>
-            <ImageView fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <Image url="@images/Add.png" />
-            </ImageView>
-         </graphic>
+         <padding>
+            <Insets left="-18.0" />
+         </padding>
       </Button>
       <Button layoutX="10.0" layoutY="145.0" mnemonicParsing="false" onAction="#deleteBookAction" prefHeight="39.0" prefWidth="160.0" text="Delete book">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#editBookAction" prefHeight="39.0" prefWidth="160.0" text="Edit book">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <padding>
+            <Insets left="-20.0" />
+         </padding>
       </Button>
    </VBox>
 </AnchorPane>
