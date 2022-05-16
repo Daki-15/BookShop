@@ -68,7 +68,7 @@ public class LoginController {
 
                 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("client.fxml"));
                 stage.setTitle("Client");
-                stage.setScene(new Scene(root, 600, 400));
+                stage.setScene(new Scene(root, 705, 400));
                 stage.show();
 
                 //Close curent scene

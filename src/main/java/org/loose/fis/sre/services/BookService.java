@@ -52,7 +52,6 @@ public class BookService {
         }
     }
 
-
     public static void deleteBook(String bookName, Text deleteBookMessage) throws FieldNotCompletedException, BookDoesNotExistsException {
         checkBookNameFieldIsCompleted(bookName);
 
@@ -79,7 +78,5 @@ public class BookService {
         return bookRepository;
     }
 
-    public static Nitrite getDatabase() {
-        return database;
-    }
+    public static Nitrite getDatabase() { return database; }
 }
