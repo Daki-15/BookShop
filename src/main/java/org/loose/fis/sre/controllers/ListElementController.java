@@ -4,23 +4,29 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.model.Book;
 import org.loose.fis.sre.services.BookService;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 public class ListElementController implements Initializable {
 
-    private ObjectRepository<Book> bookRepository = BookService.getBookRepository();
+    private final ObjectRepository<Book> bookRepository = BookService.getBookRepository();
     @FXML
     private TableView<Book> bookTable;
     @FXML
@@ -37,7 +43,7 @@ public class ListElementController implements Initializable {
     ObservableList<Book> oblist = FXCollections.observableArrayList();
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle){
         bookName.setCellValueFactory(new PropertyValueFactory<>("bookName"));
         authorName.setCellValueFactory(new PropertyValueFactory<>("authorName"));
         bookType.setCellValueFactory(new PropertyValueFactory<>("bookType"));
@@ -55,7 +61,7 @@ public class ListElementController implements Initializable {
         return oblist;
     }
 
-        private void addButtonToTable() {
+        private void addButtonToTable(){
             TableColumn<Book, Void> buyButton = new TableColumn("Buy a Book");
 
             Callback<TableColumn<Book, Void>, TableCell<Book, Void>> cellFactory = new Callback<>() {
@@ -68,9 +74,17 @@ public class ListElementController implements Initializable {
                         {
                             buyButton.setOnAction((ActionEvent event) -> {
                                 //On button click
-                                System.out.println("Button Buy click");
-                                Book data = getTableView().getItems().get(getIndex());
-                                System.out.println("selectedData: " + data);
+                                Stage stage = new Stage();
+
+                                Parent root = null;
+                                try {
+                                    root = FXMLLoader.load(getClass().getClassLoader().getResource("buy.fxml"));
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                stage.setTitle("Buy a Book");
+                                stage.setScene(new Scene(root, 435, 351));
+                                stage.show();
                             });
                         }
 
