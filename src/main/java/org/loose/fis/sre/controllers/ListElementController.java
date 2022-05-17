@@ -2,11 +2,15 @@ package org.loose.fis.sre.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.model.Book;
 import org.loose.fis.sre.services.BookService;
@@ -18,7 +22,7 @@ public class ListElementController implements Initializable {
 
     private ObjectRepository<Book> bookRepository = BookService.getBookRepository();
     @FXML
-    private TableView<Book> bookTabel;
+    private TableView<Book> bookTable;
     @FXML
     private TableColumn<Book, String> bookName;
     @FXML
@@ -39,8 +43,9 @@ public class ListElementController implements Initializable {
         bookType.setCellValueFactory(new PropertyValueFactory<>("bookType"));
         publishingHouse.setCellValueFactory(new PropertyValueFactory<>("publishingHouse"));
         bookPrice.setCellValueFactory(new PropertyValueFactory<>("bookPrice"));
+        addButtonToTable();
 
-        bookTabel.setItems(getBook());
+        bookTable.setItems(getBook());
     }
 
     public ObservableList<Book> getBook() {
@@ -49,4 +54,41 @@ public class ListElementController implements Initializable {
         }
         return oblist;
     }
+
+        private void addButtonToTable() {
+            TableColumn<Book, Void> buyButton = new TableColumn("Buy a Book");
+
+            Callback<TableColumn<Book, Void>, TableCell<Book, Void>> cellFactory = new Callback<>() {
+                @Override
+                public TableCell<Book, Void> call(final TableColumn<Book, Void> param) {
+                    final TableCell<Book, Void> cell = new TableCell<Book, Void>() {
+
+                        private final Button buyButton = new Button("Buy");
+
+                        {
+                            buyButton.setOnAction((ActionEvent event) -> {
+                                //On button click
+                                System.out.println("Button Buy click");
+                                Book data = getTableView().getItems().get(getIndex());
+                                System.out.println("selectedData: " + data);
+                            });
+                        }
+
+                        @Override
+                        public void updateItem(Void item, boolean empty) {
+                            super.updateItem(item, empty);
+                            if (empty) {
+                                setGraphic(null);
+                            } else {
+                                setGraphic(buyButton);
+                            }
+                        }
+                    };
+                    return cell;
+                }
+            };
+            buyButton.setCellFactory(cellFactory);
+
+            bookTable.getColumns().add(buyButton);
+        }
 }
