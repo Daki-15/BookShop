@@ -31,8 +31,6 @@ public class BuyBookController {
         try {
             ShippingService.addShipingInfo(firstnameField.getText(),lastnameField.getText(),adressField.getText(),postalcodeField.getText());
 
-            System.out.println("Order Book");
-
             orderMessage.setText("Book successfully buyed!");
 
             firstnameField.clear();
