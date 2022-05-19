@@ -1,7 +1,6 @@
 package org.loose.fis.sre.model;
 
 import org.dizitart.no2.objects.Id;
-
 import java.util.Objects;
 
 public class User {

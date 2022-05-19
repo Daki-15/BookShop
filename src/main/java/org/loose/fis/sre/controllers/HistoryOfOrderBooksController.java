@@ -9,19 +9,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.model.Book;
-import org.loose.fis.sre.model.Shipping;
-import org.loose.fis.sre.services.BookService;
-import org.loose.fis.sre.services.ShippingService;
-
-
+import org.loose.fis.sre.services.HistoryOfOrderService;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HistoryOfOrderBooksController implements Initializable {
-    private final ObjectRepository<Book> bookRepository = BookService.getBookRepository();
-    private final ObjectRepository<Shipping> shippingRepository = ShippingService.getShippingRepository();
-
+    private final ObjectRepository<Book> orderHistoryRepository = HistoryOfOrderService.getBookRepository();
     @FXML
     private TableView<Book> bookHistoryTable;
     @FXML
@@ -49,7 +42,7 @@ public class HistoryOfOrderBooksController implements Initializable {
     }
 
     public ObservableList<Book> getBook() {
-        for(Book book : bookRepository.find()){
+        for(Book book : orderHistoryRepository.find()){
             oblist.add(book);
         }
         return oblist;

@@ -18,14 +18,13 @@ import javafx.util.Callback;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.loose.fis.sre.model.Book;
 import org.loose.fis.sre.services.BookService;
-
+import org.loose.fis.sre.services.HistoryOfOrderService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 public class ListElementController implements Initializable {
-
     private final ObjectRepository<Book> bookRepository = BookService.getBookRepository();
     @FXML
     private TableView<Book> bookTable;
@@ -70,11 +69,11 @@ public class ListElementController implements Initializable {
                     final TableCell<Book, Void> cell = new TableCell<Book, Void>() {
 
                         private final Button buyButton = new Button("Buy");
-
                         {
                             buyButton.setOnAction((ActionEvent event) -> {
                                 //On button click
                                 Stage stage = new Stage();
+                                Book data = getTableView().getItems().get(getIndex());
 
                                 Parent root = null;
                                 try {
@@ -85,6 +84,8 @@ public class ListElementController implements Initializable {
                                 stage.setTitle("Buy a Book");
                                 stage.setScene(new Scene(root, 435, 351));
                                 stage.show();
+                                HistoryOfOrderService.addBuyedBook(data.getBookName(), data.getAuthorName(),
+                                        data.getBookType(), data.getPublishingHouse(), data.getBookPrice());
                             });
                         }
 

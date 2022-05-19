@@ -2,7 +2,6 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.loose.fis.sre.controllers.LoginController;
 import org.loose.fis.sre.exceptions.FieldNotCompletedException;
 import org.loose.fis.sre.model.Shipping;
 
@@ -15,7 +14,7 @@ public class ShippingService {
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
                 .filePath(getPathToFile("shipping_database.db").toFile())
-                .openOrCreate("test4", "test4");
+                .openOrCreate("test3", "test3");
 
         shippingRepository = database.getRepository(Shipping.class);
     }
