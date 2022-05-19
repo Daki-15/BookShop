@@ -2,6 +2,7 @@ package org.loose.fis.sre.services;
 
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
+import org.loose.fis.sre.controllers.LoginController;
 import org.loose.fis.sre.exceptions.FieldNotCompletedException;
 import org.loose.fis.sre.model.Shipping;
 
@@ -10,6 +11,7 @@ import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 public class ShippingService {
     private static ObjectRepository<Shipping> shippingRepository;
     private static Nitrite database;
+    private static String curentUser = LoginController.getCurentUser();
 
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
@@ -21,7 +23,7 @@ public class ShippingService {
 
     public static void addShipingInfo(String firstname, String lastname, String adress, String postalcode) throws FieldNotCompletedException{
         checkAllFieldsAreCompleted(firstname, lastname, adress, postalcode);
-        shippingRepository.insert(new Shipping(firstname, lastname, adress, postalcode));
+        shippingRepository.insert(new Shipping(firstname, lastname, adress, postalcode, curentUser));
     }
 
     private static void checkAllFieldsAreCompleted(String firstnameField, String lastnameField, String adressField, String postalcodeField) throws FieldNotCompletedException {

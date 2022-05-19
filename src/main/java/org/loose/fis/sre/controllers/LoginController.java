@@ -32,6 +32,8 @@ public class LoginController {
     @FXML
     private Text logInMessage;
 
+    private static String curentUser;
+
     @FXML
     public void initialize() {
         role.getItems().addAll("Client", "Bookshop");
@@ -58,6 +60,8 @@ public class LoginController {
         if(ok == 0){
 
             logInMessage.setText("Account Log In successfully!");
+            //save curent username who is Log in
+            curentUser = usernameField.getText();
             usernameField.clear();
             passwordField.clear();
 
@@ -97,5 +101,9 @@ public class LoginController {
         if(ok == 2){
             logInMessage.setText("Account dosen't exist !");
         }
+    }
+
+    public static String getCurentUser(){
+        return curentUser;
     }
 }
