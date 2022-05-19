@@ -10,14 +10,12 @@ public class Shipping {
     private String lastname;
     private String adress;
     private String postalcode;
-    private String userName;
 
-    public Shipping(String firstname, String lastname, String adress, String postalcode, String userName) {
+    public Shipping(String firstname, String lastname, String adress, String postalcode) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.adress = adress;
         this.postalcode = postalcode;
-        this.userName = userName;
     }
 
     public Shipping() {
@@ -38,10 +36,6 @@ public class Shipping {
     public String getPostalcode() { return postalcode; }
 
     public void setPostalcode(String postalcode) { this.postalcode = postalcode; }
-
-    public String getUserName() { return userName; }
-
-    public void setUserName(String username) { this.userName = userName; }
 
     @Override
     public boolean equals(Object o) {

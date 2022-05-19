@@ -35,8 +35,6 @@ public class HistoryOfOrderBooksController implements Initializable {
     @FXML
     private TableColumn<Book, Float> bookPrice;
 
-    private String curentUser = LoginController.getCurentUser();
-
     ObservableList<Book> oblist = FXCollections.observableArrayList();
 
     @Override
@@ -48,14 +46,11 @@ public class HistoryOfOrderBooksController implements Initializable {
         bookPrice.setCellValueFactory(new PropertyValueFactory<>("bookPrice"));
 
         bookHistoryTable.setItems(getBook());
-
-        System.out.println("User name is " + curentUser);
     }
 
     public ObservableList<Book> getBook() {
-        for(Shipping shipping : shippingRepository.find()){
-            if (Objects.equals(curentUser, shipping.getUserName()))
-                oblist.add(book);
+        for(Book book : bookRepository.find()){
+            oblist.add(book);
         }
         return oblist;
     }

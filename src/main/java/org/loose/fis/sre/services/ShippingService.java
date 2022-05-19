@@ -11,7 +11,6 @@ import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 public class ShippingService {
     private static ObjectRepository<Shipping> shippingRepository;
     private static Nitrite database;
-    private static String curentUser = LoginController.getCurentUser();
 
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
@@ -23,7 +22,7 @@ public class ShippingService {
 
     public static void addShipingInfo(String firstname, String lastname, String adress, String postalcode) throws FieldNotCompletedException{
         checkAllFieldsAreCompleted(firstname, lastname, adress, postalcode);
-        shippingRepository.insert(new Shipping(firstname, lastname, adress, postalcode, curentUser));
+        shippingRepository.insert(new Shipping(firstname, lastname, adress, postalcode));
     }
 
     private static void checkAllFieldsAreCompleted(String firstnameField, String lastnameField, String adressField, String postalcodeField) throws FieldNotCompletedException {
