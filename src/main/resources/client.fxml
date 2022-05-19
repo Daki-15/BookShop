@@ -18,11 +18,10 @@
                <children>
                   <MenuBar fx:id="menuBar" style="-fx-background-color: #ADD8E6;">
                     <menus>
-                      <Menu fx:id="historyOrders" mnemonicParsing="false" text="File" />
                       <Menu fx:id="view" mnemonicParsing="false" text="View">
                            <items>
                               <MenuItem mnemonicParsing="false" onAction="#loadBookList" text="Books" />
-                              <MenuItem mnemonicParsing="false" text="History of orders" />
+                              <MenuItem mnemonicParsing="false" onAction="#loadHistoryOfOrderBooks" text="History of orders" />
                            </items>
                       </Menu>
                     </menus>
@@ -32,7 +31,7 @@
                         <Font size="22.0" />
                      </font>
                      <HBox.margin>
-                        <Insets bottom="20.0" left="90.0" top="30.0" />
+                        <Insets bottom="20.0" left="235.0" top="30.0" />
                      </HBox.margin>
                   </Text>
                </children>
