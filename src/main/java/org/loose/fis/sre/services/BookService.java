@@ -7,9 +7,7 @@ import org.loose.fis.sre.exceptions.BookDoesNotExistsException;
 import org.loose.fis.sre.exceptions.BookNameAlreadyExistsException;
 import org.loose.fis.sre.exceptions.FieldNotCompletedException;
 import org.loose.fis.sre.model.Book;
-
 import java.util.Objects;
-
 import static org.loose.fis.sre.services.FileSystemService.getPathToFile;
 
 public class BookService {

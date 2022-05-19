@@ -58,6 +58,7 @@ public class LoginController {
         if(ok == 0){
 
             logInMessage.setText("Account Log In successfully!");
+            //save curent username who is Log in
             usernameField.clear();
             passwordField.clear();
 
