@@ -59,7 +59,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Button layoutX="154.0" layoutY="274.0" mnemonicParsing="false" onAction="#orderBook" prefHeight="26.0" prefWidth="63.0" text="Order" />
+      <Button fx:id="orderButton" layoutX="154.0" layoutY="274.0" mnemonicParsing="false" onAction="#orderBook" prefHeight="26.0" prefWidth="63.0" text="Order" />
       <Button layoutX="262.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleClose" prefHeight="26.0" prefWidth="67.0" text="Cancel" />
       <Text fx:id="orderMessage" layoutX="170.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="138.93670654296875" />
    </children>
