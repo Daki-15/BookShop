@@ -19,7 +19,7 @@
             <Insets left="25.0" top="80.0" />
          </VBox.margin>
       </Label>
-      <Button mnemonicParsing="false" onAction="#addBookAction" prefHeight="39.0" prefWidth="160.0" text="Add book">
+      <Button fx:id="addBookButton" mnemonicParsing="false" onAction="#addBookAction" prefHeight="39.0" prefWidth="160.0" text="Add book">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -30,12 +30,12 @@
             <Insets left="-18.0" />
          </padding>
       </Button>
-      <Button layoutX="10.0" layoutY="145.0" mnemonicParsing="false" onAction="#deleteBookAction" prefHeight="39.0" prefWidth="160.0" text="Delete book">
+      <Button fx:id="deleteBookButton" layoutX="10.0" layoutY="145.0" mnemonicParsing="false" onAction="#deleteBookAction" prefHeight="39.0" prefWidth="160.0" text="Delete book">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#editBookAction" prefHeight="39.0" prefWidth="160.0" text="Edit book">
+      <Button fx:id="editBookButton" mnemonicParsing="false" onAction="#editBookAction" prefHeight="39.0" prefWidth="160.0" text="Edit book">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

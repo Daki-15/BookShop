@@ -26,6 +26,9 @@ public class BookshopDeleteBookController {
     private Button backButton;
 
     @FXML
+    private Button deleteBookButton;
+
+    @FXML
     private TextField bookNameField;
 
     public void backToBookShopPage(ActionEvent event) throws IOException {

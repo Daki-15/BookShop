@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -17,6 +18,12 @@ import org.loose.fis.sre.services.BookService;
 import java.io.IOException;
 
 public class BookshopAddBookController {
+
+    @FXML
+    private Button addBookButton;
+
+    @FXML
+    private Button backButton;
 
     @FXML
     private TextField bookAuthor;
