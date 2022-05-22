@@ -120,5 +120,6 @@
             </HBox.margin>
         </Button>
     </HBox>
-    <Text fx:id="editBookMessage" layoutX="250.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="361.53668212890625" />
+    <Text fx:id="searchedBookMessage" layoutX="250.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="361.53668212890625" />
+    <Text fx:id="editBookMessage" layoutX="100.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="361.53668212890625" />
 </AnchorPane>
