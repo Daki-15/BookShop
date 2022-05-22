@@ -14,7 +14,7 @@ public class HistoryOfOrderService {
     private static Nitrite database;
 
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("order_books_database.db").toFile())
                 .openOrCreate("test4", "test4");
 

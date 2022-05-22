@@ -22,6 +22,15 @@ import java.util.ResourceBundle;
 public class BookShopController implements Initializable {
 
     @FXML
+    private Button addBookButton;
+
+    @FXML
+    private Button deleteBookButton;
+
+    @FXML
+    private Button editBookButton;
+
+    @FXML
     private TableColumn<Shipping, String> customerFirstName;
 
     @FXML

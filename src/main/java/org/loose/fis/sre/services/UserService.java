@@ -19,7 +19,7 @@ public class UserService {
     private static Nitrite database;
 
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+         database = Nitrite.builder()
                 .filePath(getPathToFile("book-shop.db").toFile())
                 .openOrCreate("test", "test");
 

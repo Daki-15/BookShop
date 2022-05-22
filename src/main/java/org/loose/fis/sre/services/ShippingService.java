@@ -16,7 +16,7 @@ public class ShippingService {
     private static Nitrite database;
 
     public static void initDatabase() {
-        Nitrite database = Nitrite.builder()
+        database = Nitrite.builder()
                 .filePath(getPathToFile("shipping_database.db").toFile())
                 .openOrCreate("test3", "test3");
 
