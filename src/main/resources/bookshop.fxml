@@ -43,6 +43,14 @@
             <Insets left="-20.0" />
          </padding>
       </Button>
+      <Button fx:id="logoutButton" layoutX="10.0" layoutY="224.0" mnemonicParsing="false" onAction="#handleLogoutAction" prefHeight="39.0" prefWidth="160.0" text="Logout">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <padding>
+            <Insets left="-40.0" />
+         </padding>
+      </Button>
    </VBox>
    <TableView fx:id="soldBooksTable" layoutX="203.0" layoutY="23.0" prefHeight="434.0" prefWidth="601.0">
       <columns>
