@@ -10,11 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.loose.fis.sre.exceptions.BookDoesNotExistsException;
 import org.loose.fis.sre.exceptions.FieldNotCompletedException;
+import org.loose.fis.sre.model.Book;
 import org.loose.fis.sre.services.BookService;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class BookshopDeleteBookController {
 
@@ -40,9 +41,18 @@ public class BookshopDeleteBookController {
     @FXML
     void deleteBook() {
         try {
-            BookService.deleteBook(bookNameField.getText(), deleteBookMessage);
+            BookService.checkBookNameFieldIsCompleted(bookNameField.getText());
+
+            for (Book book : BookService.getBookRepository().find()) {
+                if (Objects.equals(bookNameField.getText(), book.getBookName())) {
+                    BookService.getBookRepository().remove(book);
+                    deleteBookMessage.setText("Book " + bookNameField.getText() + " successfully deleted!");
+                } else if (!Objects.equals(bookNameField.getText(), book.getBookName())) {
+                    deleteBookMessage.setText("Book with the name " + bookNameField.getText() + " does not exist!");
+                }
+            }
             bookNameField.clear();
-        } catch (FieldNotCompletedException | BookDoesNotExistsException e) {
+        } catch (FieldNotCompletedException e) {
             deleteBookMessage.setText(e.getMessage());
         }
     }
