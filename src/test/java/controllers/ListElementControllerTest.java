@@ -60,8 +60,8 @@ public class ListElementControllerTest {
     }
 
     @Test
-    @DisplayName("FxRobot enters user`s data and the login is successfully for client")
-    public void testLoginIsSuccessfulForBookshop(@NotNull FxRobot robot) throws UsernameAlreadyExistsException, FieldNotCompletedException, BookNameAlreadyExistsException {
+    @DisplayName("FxRobot enters user`s data and verify if a book is list")
+    public void testListBookIsSuccessfulForBookshop(@NotNull FxRobot robot) throws UsernameAlreadyExistsException, FieldNotCompletedException, BookNameAlreadyExistsException {
         UserService.addUser("username", "parola", "Client", "123456779", "Brasov", "Maria");
         assertThat(UserService.getUserRepository().size()).isEqualTo(1);
 

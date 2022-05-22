@@ -62,8 +62,8 @@ public class BookShopAddBookControllerTest {
     }
 
     @Test
-    @DisplayName("FxRobot enters user`s data and the login is successfully for BookShop")
-    public void testLoginIsSuccessfulForBookShop(@NotNull FxRobot robot) throws UsernameAlreadyExistsException, FieldNotCompletedException {
+    @DisplayName("FxRobot enters user`s data and verify addBook fuctionality")
+    public void testAddBookSuccessfulForBookShop(@NotNull FxRobot robot) throws UsernameAlreadyExistsException, FieldNotCompletedException {
         UserService.addUser("username", "parola", "Bookshop", "123456779", "Brasov", "Maria");
         assertThat(UserService.getUserRepository().size()).isEqualTo(1);
 
