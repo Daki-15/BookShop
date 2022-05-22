@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.loose.fis.sre.exceptions.BookDoesNotExistsException;
 import org.loose.fis.sre.exceptions.BookNameAlreadyExistsException;
 import org.loose.fis.sre.exceptions.BookPriceException;
 import org.loose.fis.sre.exceptions.FieldNotCompletedException;
@@ -21,9 +20,13 @@ import org.loose.fis.sre.services.BookService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class BookshopEditBookController implements Initializable {
+
+    @FXML
+    private Text searchedBookMessage;
 
     @FXML
     private Text editBookMessage;
@@ -58,7 +61,6 @@ public class BookshopEditBookController implements Initializable {
     @FXML
     private Button searchBookButton;
 
-
     private static Book existingBook;
 
     @FXML
@@ -75,8 +77,9 @@ public class BookshopEditBookController implements Initializable {
             searchBookName.clear();
             hboxSearch.setVisible(true);
             hboxEdit.setVisible(false);
-            editBookMessage.setVisible(true);
-            editBookMessage.setText("Book successfully updated!");
+            searchedBookMessage.setVisible(true);
+            editBookMessage.setVisible(false);
+            searchedBookMessage.setText("Book successfully updated!");
 
             bookName.clear();
             bookAuthor.clear();
@@ -87,23 +90,39 @@ public class BookshopEditBookController implements Initializable {
         } catch (BookNameAlreadyExistsException | BookPriceException | FieldNotCompletedException e) {
             editBookMessage.setText(e.getMessage());
         }
-
     }
 
     @FXML
     public void searchBook() {
-        try {
-            existingBook = BookService.checkBookNameExists(searchBookName.getText());
 
-            if (existingBook != null) {
-                hboxSearch.setVisible(false);
-                hboxEdit.setVisible(true);
-                editBookMessage.setVisible(false);
+        int k = 0;
+        for (Book book : BookService.getBookRepository().find()) {
+            if (Objects.equals(searchBookName.getText(), book.getBookName())) {
+                existingBook = book;
+                k = 1;
             }
-        } catch (BookDoesNotExistsException e) {
+        }
+        if (existingBook != null) {
+            hboxSearch.setVisible(false);
+            searchedBookMessage.setVisible(false);
+            hboxEdit.setVisible(true);
+            editBookMessage.setVisible(true);
+        }
+
+        if (searchBookName.getText().equals("")) {
             hboxSearch.setVisible(true);
+            searchedBookMessage.setVisible(true);
+            searchedBookMessage.setText("Please complete all fields!");
             hboxEdit.setVisible(false);
-            editBookMessage.setText(e.getMessage());
+            editBookMessage.setVisible(false);
+        }
+
+        if (k == 0 && (!searchBookName.getText().equals(""))) {
+            hboxSearch.setVisible(true);
+            searchedBookMessage.setVisible(true);
+            searchedBookMessage.setText("Book with the name " + searchBookName.getText() + " does not exist!");
+            hboxEdit.setVisible(false);
+            editBookMessage.setVisible(false);
         }
     }
 
@@ -123,6 +142,4 @@ public class BookshopEditBookController implements Initializable {
         window.setScene(loginScene);
         window.show();
     }
-
-
 }
